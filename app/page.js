@@ -32,43 +32,74 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex flex-col items-center justify-start pt-20 px-4">
-      {/* 회사명 */}
-      <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 text-center">
-        UniPart
-      </h1>
-      
-      {/* 소개 문구 */}
-      <p className="text-lg md:text-xl text-white text-center max-w-3xl mb-16 leading-relaxed opacity-90">
-        대학과의 파트너십을 통해 지역 상권과 캠퍼스를 잇는 가교 역할을 합니다.<br />
-        학생들이 더 많은 혜택과 경험을 누리며 지역 사회와 함께 성장할 수 있도록 지원합니다.
-      </p>
-
-      {/* 대학 버튼 리스트 */}
-      <div className="w-full max-w-md space-y-4">
-        {universities.length === 0 ? (
-          <p className="text-white text-center opacity-60">등록된 대학이 없습니다.</p>
-        ) : (
-          universities.map((university) => (
-            <button
-              key={university.id}
-              onClick={() => handleUniversityClick(university)}
-              className="w-full py-4 px-6 bg-transparent border-2 border-sky-400 text-white text-lg font-medium rounded-lg hover:bg-sky-400 hover:bg-opacity-20 transition-all duration-300 ease-in-out transform hover:scale-105"
-            >
-              {university.name}
-            </button>
-          ))
-        )}
+    <div className="min-h-screen relative overflow-hidden">
+      {/* 검은색 그라데이션 배경 */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
+        <div className="absolute inset-0 bg-gradient-radial from-gray-800/20 via-transparent to-transparent"></div>
       </div>
 
-      {/* 관리자 페이지 링크 */}
-      <div className="mt-16">
-        <a
-          href="/admin"
-          className="text-gray-400 hover:text-gray-300 text-sm transition-colors"
-        >
-          관리자 페이지
-        </a>
+      {/* 움직이는 그라데이션 효과 */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse-slow"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse-slow-delay"></div>
+
+      {/* 메인 콘텐츠 */}
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-start pt-24 px-4 pb-12">
+        {/* 회사명 - 토스 스타일 */}
+        <div className="mb-8 animate-fade-in-down">
+          <h1 className="text-7xl md:text-8xl lg:text-9xl font-black text-white mb-4 text-center tracking-tight">
+            UniPart
+          </h1>
+          <div className="h-1 w-32 bg-white mx-auto rounded-full"></div>
+        </div>
+        
+        {/* 소개 문구 - 토스 스타일 */}
+        <div className="animate-fade-in-up mb-20">
+          <p className="text-xl md:text-2xl lg:text-3xl text-white text-center max-w-4xl mb-6 leading-relaxed font-medium">
+            대학과 지역을 연결하는
+          </p>
+          <p className="text-xl md:text-2xl lg:text-3xl text-white text-center max-w-4xl leading-relaxed font-medium">
+            <span className="text-white/70">새로운 파트너십</span>
+          </p>
+          <p className="text-base md:text-lg text-white/60 text-center max-w-2xl mt-8 leading-relaxed">
+            학생들이 더 많은 혜택과 경험을 누리며<br className="hidden md:block" />
+            지역 사회와 함께 성장할 수 있도록 지원합니다
+          </p>
+        </div>
+
+        {/* 대학 버튼 리스트 - 토스 스타일 */}
+        <div className="w-full max-w-xl space-y-5 animate-fade-in">
+          {universities.length === 0 ? (
+            <p className="text-white/50 text-center text-lg">등록된 대학이 없습니다.</p>
+          ) : (
+            universities.map((university, index) => (
+              <button
+                key={university.id}
+                onClick={() => handleUniversityClick(university)}
+                className="university-button group w-full py-6 px-8 bg-white/5 backdrop-blur-sm border border-white/20 text-white text-xl font-bold rounded-2xl transition-all duration-500 ease-out hover:bg-white hover:text-black hover:border-white hover:shadow-2xl hover:shadow-white/20"
+                style={{
+                  animationDelay: `${index * 100}ms`
+                }}
+              >
+                <span className="inline-block transition-transform duration-700 ease-out group-hover:scale-110 group-hover:rotate-y-360">
+                  {university.name}
+                </span>
+              </button>
+            ))
+          )}
+        </div>
+
+        {/* 하단 텍스트 */}
+        <div className="mt-auto pt-20">
+          <p className="text-white/40 text-sm text-center mb-4">
+            지역 상권과 캠퍼스를 잇는 가교
+          </p>
+          <a
+            href="/admin"
+            className="text-white/30 hover:text-white/60 text-xs transition-all duration-300 block text-center"
+          >
+            관리자 페이지
+          </a>
+        </div>
       </div>
     </div>
   );

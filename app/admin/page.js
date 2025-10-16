@@ -187,11 +187,11 @@ const AdminPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-black py-8">
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold mb-4">관리자 페이지</h1>
-          <Link href="/" className="text-blue-600 hover:underline">← 메인 페이지로 돌아가기</Link>
+          <h1 className="text-3xl font-bold mb-4 text-white">관리자 페이지</h1>
+          <Link href="/" className="text-white/60 hover:text-white transition-colors">← 메인 페이지로 돌아가기</Link>
         </div>
         
         <div className="bg-white rounded-lg shadow-md mb-6">

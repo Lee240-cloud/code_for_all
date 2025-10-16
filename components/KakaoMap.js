@@ -58,7 +58,7 @@ const KakaoMap = ({ university }) => {
       {selectedStore && (
         <div className="absolute bottom-4 left-4 bg-white p-4 rounded-lg shadow-lg max-w-sm z-10">
           <div className="flex justify-between items-start mb-2">
-            <h3 className="font-bold text-lg">{selectedStore.name}</h3>
+            <h3 className="font-bold text-lg text-black">{selectedStore.name}</h3>
             <button
               onClick={() => setSelectedStore(null)}
               className="text-gray-500 hover:text-gray-700 text-2xl leading-none"
