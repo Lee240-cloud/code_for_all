@@ -1,6 +1,6 @@
 'use client';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 
@@ -14,11 +14,7 @@ const KakaoMap = ({ university }) => {
     lng: 126.6620
   });
 
-  useEffect(() => {
-    fetchStores();
-  }, [university]);
-
-  const fetchStores = async () => {
+  const fetchStores = useCallback(async () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'stores'));
       const storesData = [];
@@ -33,7 +29,11 @@ const KakaoMap = ({ university }) => {
     } catch (error) {
       console.error('가게 정보를 불러오는데 실패했습니다:', error);
     }
-  };
+  }, [university]);
+
+  useEffect(() => {
+    fetchStores();
+  }, [fetchStores]);
 
   const handleMarkerClick = (store) => {
     setSelectedStore(store);

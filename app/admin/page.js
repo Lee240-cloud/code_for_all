@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { 
   addStore, getStores, updateStore, deleteStore,
   addUniversity, getUniversities, updateUniversity, deleteUniversity 
@@ -190,7 +191,7 @@ const AdminPage = () => {
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-6">
           <h1 className="text-3xl font-bold mb-4">관리자 페이지</h1>
-          <a href="/" className="text-blue-600 hover:underline">← 메인 페이지로 돌아가기</a>
+          <Link href="/" className="text-blue-600 hover:underline">← 메인 페이지로 돌아가기</Link>
         </div>
         
         <div className="bg-white rounded-lg shadow-md mb-6">
@@ -253,7 +254,7 @@ const AdminPage = () => {
                 <h3 className="text-xl font-bold mb-6 text-center">{editingStore ? '가게 정보 수정' : '파트너십 가게 추가'}</h3>
                 {editingStore && (
                   <div className="mb-4 p-4 bg-yellow-100 text-yellow-800 rounded-md flex justify-between items-center">
-                    <span>'{editingStore.name}' 가게를 수정하고 있습니다.</span>
+                    <span>&apos;{editingStore.name}&apos; 가게를 수정하고 있습니다.</span>
                     <button onClick={handleStoreCancelEdit} className="text-sm underline hover:no-underline">취소</button>
                   </div>
                 )}
@@ -377,7 +378,7 @@ const AdminPage = () => {
                 <h3 className="text-xl font-bold mb-6 text-center">{editingUniversity ? '대학 정보 수정' : '대학 추가'}</h3>
                 {editingUniversity && (
                   <div className="mb-4 p-4 bg-yellow-100 text-yellow-800 rounded-md flex justify-between items-center">
-                    <span>'{editingUniversity.name}' 대학을 수정하고 있습니다.</span>
+                    <span>&apos;{editingUniversity.name}&apos; 대학을 수정하고 있습니다.</span>
                     <button onClick={handleUniversityCancelEdit} className="text-sm underline hover:no-underline">취소</button>
                   </div>
                 )}
